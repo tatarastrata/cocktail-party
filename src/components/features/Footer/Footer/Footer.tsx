@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Footer.module.scss';
 import { IFooterPropTypes } from './FooterPropTypes';
 import { Link, Stack, Text } from '@chakra-ui/react';
-import { colors } from '../../../../styles/theme';
+import { colors } from 'styles/theme';
 
 const Footer: React.FC<IFooterPropTypes> = ({}) => {
   return (

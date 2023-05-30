@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ICocktailsState } from './cocktailsTypes';
-import { TRootState } from '../../types';
+import { TRootState } from 'appRedux/types';
 import {
   fetchCocktailById,
   fetchCocktailByName,

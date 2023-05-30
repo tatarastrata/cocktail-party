@@ -4,8 +4,8 @@ import {
   lookupCocktailById,
   lookupRandomCocktail,
   searchCocktailByName,
-} from '../../../services/api';
-import { mapResponseDataCocktail } from '../../../utils/mapResponseData.utils';
+} from 'services/api';
+import { mapResponseDataCocktail } from 'utils/mapResponseData.utils';
 import { ICocktail } from './cocktailsTypes';
 
 export const fetchCocktailByName = createAsyncThunk(

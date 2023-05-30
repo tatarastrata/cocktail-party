@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { TRootState } from '../../types';
+import { TRootState } from 'appRedux/types';
 import { IDetailsCocktailState } from './detailsCocktailTypes';
 
 const initialState: IDetailsCocktailState = {

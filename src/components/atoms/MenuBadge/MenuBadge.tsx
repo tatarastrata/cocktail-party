@@ -1,11 +1,11 @@
 import React from 'react';
 import { IMenuBadgePropTypes } from './MenuBadgePropTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { TAppDispatch } from '../../../redux/types';
+import { TAppDispatch } from 'appRedux/types';
 import {
   openMenu,
   selectUserMenu,
-} from '../../../redux/features/userMenu/userMenuSlice';
+} from 'appRedux/features/userMenu/userMenuSlice';
 import { Button, Text, Badge } from '@chakra-ui/react';
 
 const MenuBadge: React.FC<IMenuBadgePropTypes> = ({}) => {

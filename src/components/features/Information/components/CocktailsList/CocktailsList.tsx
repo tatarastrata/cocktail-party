@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { TAppDispatch } from '../../../../../redux/types';
+import { TAppDispatch } from 'appRedux/types';
 import {
   selectLoading,
   selectError,
-} from '../../../../../redux/features/cocktails/cocktailsSlice';
-import { fetchRandomCocktail } from '../../../../../redux/features/cocktails/cocktailsActions';
+} from 'appRedux/features/cocktails/cocktailsSlice';
+import { fetchRandomCocktail } from 'appRedux/features/cocktails/cocktailsActions';
 
 const CocktailList: React.FC = () => {
   const dispatch: TAppDispatch = useDispatch();

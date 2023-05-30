@@ -23,7 +23,11 @@ npm init --y
 ```
 
 other available scripts:
-
+ "components": "./src/components",
+            "services": "./src/services",
+            "utils": "./src/utils",
+            "redux": "./src/redux",
+            "styles": "./src/styles"
 ```
 "scripts": {
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   closeMenu,
   selectUserMenu,
-} from '../../../redux/features/userMenu/userMenuSlice';
-import { TAppDispatch } from '../../../redux/types';
+} from 'appRedux/features/userMenu/userMenuSlice';
+import { TAppDispatch } from 'appRedux/types';
 import { Drawer } from '@chakra-ui/react';
 
 const DrawerComponent: React.FC<IDrawerComponentPropTypes> = ({ children }) => {
@@ -17,7 +17,7 @@ const DrawerComponent: React.FC<IDrawerComponentPropTypes> = ({ children }) => {
   };
 
   return (
-    <Drawer anchor="right" open={showMenu} onClose={handleCloseDrawer}>
+    <Drawer isOpen={showMenu} onClose={handleCloseDrawer}>
       {children}
     </Drawer>
   );

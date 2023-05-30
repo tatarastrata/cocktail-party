@@ -1,6 +1,6 @@
 import React from 'react';
 import { IHeaderPropTypes } from './HeaderPropTypes';
-import { MenuBadge } from '../../../atoms';
+import { MenuBadge } from 'components/atoms';
 import { Heading } from '@chakra-ui/react';
 
 const Header: React.FC<IHeaderPropTypes> = ({}) => {

@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IUserMenuState } from './userMenuTypes';
-import { ICocktail } from '../cocktails/cocktailsTypes';
-import { TRootState } from '../../types';
+import { ICocktail } from 'appRedux/features/cocktails/cocktailsTypes';
+import { TRootState } from 'appRedux/types';
 
 const initialState: IUserMenuState = {
   showMenu: false,

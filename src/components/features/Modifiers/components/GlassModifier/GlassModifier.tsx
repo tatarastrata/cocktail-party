@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './GlassModifier.module.scss';
 import { IGlassModifierPropTypes } from './GlassModifierPropTypes';
 import { useSelector } from 'react-redux';
-import { selectModifiers } from '../../../../../redux/features/modifiers/modifiersSlice';
+import { selectModifiers } from 'appRedux/features/modifiers/modifiersSlice';
 
 const GlassModifier: React.FC<IGlassModifierPropTypes> = ({}) => {
   const { glasses } = useSelector(selectModifiers);

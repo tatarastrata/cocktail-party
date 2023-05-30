@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IModifiersState } from './modifiersTypes';
 import { modifiersActions } from './modifiersActions';
-import { TRootState } from '../../types';
+import { TRootState } from 'appRedux/types';
 
 const initialState: IModifiersState = {
   categories: [],

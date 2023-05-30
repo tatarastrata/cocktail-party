@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './CategoryModifier.module.scss';
 import { ICategoryModifierPropTypes } from './CategoryModifierPropTypes';
 import { useSelector } from 'react-redux';
-import { selectModifiers } from '../../../../../redux/features/modifiers/modifiersSlice';
+import { selectModifiers } from 'appRedux/features/modifiers/modifiersSlice';
 import { Badge } from '@chakra-ui/react';
 
 const CategoryModifier: React.FC<ICategoryModifierPropTypes> = ({}) => {

@@ -4,9 +4,9 @@ import {
   getListOfGlasses,
   getListOfIngredients,
   getListOfAcloholicDrinks,
-} from '../../../services/api';
+} from 'services/api';
 import { TModifiers, IAlcoholicDrink } from './modifiersTypes';
-import { mapResponseDataModifiers } from '../../../utils/mapResponseData.utils';
+import { mapResponseDataModifiers } from 'utils/mapResponseData.utils';
 
 // Async thunk actions
 export const fetchCategories = createAsyncThunk<TModifiers>(

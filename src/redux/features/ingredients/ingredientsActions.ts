@@ -1,8 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {
-  lookupIngredientById,
-  searchIngredientByName,
-} from '../../../services/api';
+import { lookupIngredientById, searchIngredientByName } from 'services/api';
 
 export const fetchIngredientByName = createAsyncThunk(
   'ingredients/fetchByName',

@@ -4,11 +4,9 @@ import {
   TOptionValue,
 } from './SearchCocktailInputPropTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCocktailsByFirstLetter } from '../../../../../redux/features/cocktails/cocktailsActions';
-import { selectCocktails } from '../../../../../redux/features/cocktails/cocktailsSlice';
-import { TAppDispatch } from '../../../../../redux/types';
-import { colors } from '../../../../../styles/theme';
-import { Select } from '@chakra-ui/react';
+import { fetchCocktailsByFirstLetter } from 'appRedux/features/cocktails/cocktailsActions';
+import { selectCocktails } from 'appRedux/features/cocktails/cocktailsSlice';
+import { TAppDispatch } from 'appRedux/types';
 
 const SearchCocktailInput: React.FC<ISearchCocktailInputPropTypes> = ({}) => {
   const [input, setInput] = useState('');
@@ -36,15 +34,10 @@ const SearchCocktailInput: React.FC<ISearchCocktailInputPropTypes> = ({}) => {
   return (
     <>
       <input onChange={(e) => setInput(e.target.value)} value={input} />
-      <Select
-        sx={{
-          backgroundColor: colors.primary.main,
-        }}
-      >
-        {options.map((opt) => (
-          <p key={opt.id}>{opt.label}</p>
-        ))}
-      </Select>
+
+      {options.map((opt) => (
+        <p key={opt.id}>{opt.label}</p>
+      ))}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { ICocktail } from '../cocktails/cocktailsTypes';
+import { ICocktail } from 'appRedux/features/cocktails/cocktailsTypes';
 
 export interface IDetailsCocktailState {
   cocktail: ICocktail | null;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ISearchFiltersPropTypes } from './SearchFiltersPropTypes';
 import { useSelector } from 'react-redux';
-import { selectModifiers } from '../../../../../redux/features/modifiers';
+import { selectModifiers } from 'appRedux/features/modifiers';
 import { Box, Text } from '@chakra-ui/react';
 
 const SearchFilters: React.FC<ISearchFiltersPropTypes> = ({}) => {

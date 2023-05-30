@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
 import { ICocktailDetailsPropTypes } from './CocktailDetailsPropTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCocktailsDetails } from '../../../../../redux/features/detailsCocktail/detailsCocktailSlice';
+import { selectCocktailsDetails } from 'appRedux/features/detailsCocktail/detailsCocktailSlice';
 import { Box, Button, List, ListItem, Text } from '@chakra-ui/react';
-import { TAppDispatch } from '../../../../../redux/types';
-import { ICocktail } from '../../../../../redux/features/cocktails/cocktailsTypes';
+import { TAppDispatch } from 'appRedux/types';
+import { ICocktail } from 'appRedux/features/cocktails/cocktailsTypes';
 import {
   addCocktail,
   selectUserMenu,
-} from '../../../../../redux/features/userMenu/userMenuSlice';
+} from 'appRedux/features/userMenu/userMenuSlice';
 
 const CocktailDetails: React.FC<ICocktailDetailsPropTypes> = ({}) => {
   const { menu } = useSelector(selectUserMenu);
@@ -33,9 +33,7 @@ const CocktailDetails: React.FC<ICocktailDetailsPropTypes> = ({}) => {
 
   return (
     <Box>
-      <Text component="h3" variant="h3">
-        {cocktailToDisplay.name}
-      </Text>
+      <Text variant="h3">{cocktailToDisplay.name}</Text>
 
       <img src={cocktailToDisplay.thumb} alt={cocktailToDisplay.name} />
 
@@ -47,7 +45,7 @@ const CocktailDetails: React.FC<ICocktailDetailsPropTypes> = ({}) => {
         ))}
       </List>
 
-      <Text component="p">{cocktailToDisplay.instructions}</Text>
+      <Text>{cocktailToDisplay.instructions}</Text>
 
       <Button
         color="secondary"

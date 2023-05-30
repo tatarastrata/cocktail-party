@@ -1,9 +1,9 @@
 import {
   ICocktail,
   TMeasures,
-} from '../redux/features/cocktails/cocktailsTypes';
-import { TModifiers } from '../redux/features/modifiers/modifiersTypes';
-import { ICocktailModel, IModifiersModel } from '../services/models';
+} from 'appRedux/features/cocktails/cocktailsTypes';
+import { TModifiers } from 'appRedux/features/modifiers/modifiersTypes';
+import { ICocktailModel, IModifiersModel } from 'services/models';
 
 export const mapResponseDataCocktail = (data: ICocktailModel): ICocktail => {
   const ingredients: Array<string> = [];

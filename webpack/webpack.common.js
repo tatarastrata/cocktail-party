@@ -4,10 +4,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   resolve: {
-    fallback: {
-      "path": require.resolve("path-browserify")
+    alias: {
+      components: path.resolve(__dirname, '..', './src/components'),
+      appRedux: path.resolve(__dirname, '..', './src/redux'),
+      utils: path.resolve(__dirname, '..', './src/utils'),
+      services: path.resolve(__dirname, '..', './src/services'),
+      styles: path.resolve(__dirname, '..', './src/styles'),
     },
-    extensions: ['.tsx', '.ts', '.js'],
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
+    extensions: ['', '.tsx', '.ts', '.js'],
   },
   module: {
     rules: [
