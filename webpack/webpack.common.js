@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   resolve: {
+    fallback: {
+      "path": require.resolve("path-browserify")
+    },
     extensions: ['.tsx', '.ts', '.js'],
   },
   module: {
@@ -14,6 +17,18 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
+          },
+        ],
+      },
+      {
+        test: /theme\.json$/,
+        use: [
+          'sass-loader',
+          {
+            loader: 'json-loader',
+            options: {
+              outputStyle: 'compressed',
+            },
           },
         ],
       },
