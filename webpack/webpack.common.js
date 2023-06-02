@@ -4,7 +4,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      components: path.resolve(__dirname, '..', './src/components'),
+      appRedux: path.resolve(__dirname, '..', './src/redux'),
+      utils: path.resolve(__dirname, '..', './src/utils'),
+      services: path.resolve(__dirname, '..', './src/services'),
+      styles: path.resolve(__dirname, '..', './src/styles'),
+      hooks: path.resolve(__dirname, '..', './src/hooks'),
+      hooks: path.resolve(__dirname, '..', './src/hooks'),
+      assets: path.resolve(__dirname, '..', './src/assets'),
+    },
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
+    extensions: ['', '.tsx', '.ts', '.js'],
   },
   module: {
     rules: [
@@ -14,6 +27,18 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
+          },
+        ],
+      },
+      {
+        test: /theme\.json$/,
+        use: [
+          'sass-loader',
+          {
+            loader: 'json-loader',
+            options: {
+              outputStyle: 'compressed',
+            },
           },
         ],
       },

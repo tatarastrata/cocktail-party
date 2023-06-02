@@ -1,12 +1,20 @@
-import { MainPage, FallbackUI } from './components/pages';
-import './styles/index.scss';
-import ErrorBoundary from './components/ErrorBoundary';
+import { MainPage, FallbackUI } from 'components/pages';
+import ErrorBoundary from 'components/pages/ErrorBoundary';
+import { Header } from 'components/features/Header';
+// import { Footer } from 'components/features/Footer';
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
+import { theme } from './styles';
 
 export const App: React.FC = () => {
   return (
-    <ErrorBoundary fallbackUI={<FallbackUI />}>
-      <MainPage />
-    </ErrorBoundary>
+    <ChakraProvider theme={theme}>
+      <ColorModeScript />
+      <ErrorBoundary fallbackUI={<FallbackUI />}>
+        <Header />
+        <MainPage />
+        {/* <Footer /> */}
+      </ErrorBoundary>
+    </ChakraProvider>
   );
 };
 
