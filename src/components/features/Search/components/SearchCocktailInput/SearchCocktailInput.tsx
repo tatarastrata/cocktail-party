@@ -3,22 +3,31 @@ import {
   ISearchCocktailInputPropTypes,
   TOptionValue,
 } from './SearchCocktailInputPropTypes';
+import { InputWithOptions } from 'components/atoms';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCocktailsByFirstLetter } from 'appRedux/features/cocktails/cocktailsActions';
 import { selectCocktails } from 'appRedux/features/cocktails/cocktailsSlice';
 import { TAppDispatch } from 'appRedux/types';
+import { showDetails } from 'appRedux/features/detailsCocktail';
+import { ELayout, selectLayout } from 'appRedux/features/view';
 
 const SearchCocktailInput: React.FC<ISearchCocktailInputPropTypes> = ({}) => {
-  const [input, setInput] = useState('');
-  const [options, setOptions] = useState<TOptionValue[] | []>([]);
-
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState<TOptionValue[]>([]);
   const dispatch: TAppDispatch = useDispatch();
-
   const cocktails = useSelector(selectCocktails);
 
+  const layout = useSelector(selectLayout);
+
+  const handleSelectCocktail = (id: string) => {
+    dispatch(showDetails(cocktails.find((cocktail) => cocktail.id === id)));
+  };
+
   useEffect(() => {
-    input.length === 1 && dispatch(fetchCocktailsByFirstLetter(input));
-  }, [dispatch, input]);
+    if (inputValue.length === 1) {
+      dispatch(fetchCocktailsByFirstLetter(inputValue));
+    }
+  }, [dispatch, inputValue]);
 
   useEffect(() => {
     setOptions(
@@ -31,14 +40,22 @@ const SearchCocktailInput: React.FC<ISearchCocktailInputPropTypes> = ({}) => {
     );
   }, [cocktails]);
 
-  return (
-    <>
-      <input onChange={(e) => setInput(e.target.value)} value={input} />
+  useEffect(() => {
+    setOptions((prev) =>
+      prev.filter((option) =>
+        option.label.toLowerCase().startsWith(inputValue.toLowerCase())
+      )
+    );
+  }, [inputValue]);
 
-      {options.map((opt) => (
-        <p key={opt.id}>{opt.label}</p>
-      ))}
-    </>
+  return (
+    <InputWithOptions
+      inputValue={inputValue}
+      setInputValue={setInputValue}
+      options={options}
+      onOptionSelect={handleSelectCocktail}
+      showAccordion={layout === ELayout.SINGLE}
+    />
   );
 };
 

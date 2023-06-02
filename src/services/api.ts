@@ -1,5 +1,9 @@
 import axios, { AxiosInstance } from 'axios';
-import { ICocktailsListModel } from './models';
+import {
+  ICocktailsListModel,
+  IFilteredSearchModel,
+  ISearchCocktailWithFiltersPropTypes,
+} from './models';
 
 const API_KEY = 1;
 const API_BASE_URL = `https://www.thecocktaildb.com/api/json/v1/${API_KEY}`;
@@ -21,6 +25,27 @@ axiosInstance.interceptors.response.use(
 
 export const searchCocktailByName = async (name: string) => {
   const response = await axiosInstance.get(`/search.php?s=${name}`);
+  return response.data;
+};
+
+export const searchCocktailsWithFilters = async ({
+  ingredients,
+  tags,
+  categories,
+  alcohol,
+  searchInput,
+}: ISearchCocktailWithFiltersPropTypes): Promise<IFilteredSearchModel> => {
+  const searchParams = [];
+
+  if (!!ingredients) searchParams.push(['i', ingredients.join(',')]);
+  if (!!tags) searchParams.push(['t', tags.join(',')]);
+  if (!!categories) searchParams.push(['i', categories.join(',')]);
+  if (!!alcohol) searchParams.push(['a', alcohol]);
+  if (!!searchInput) searchParams.push(['s', searchInput]);
+
+  const response = await axiosInstance.get(
+    `/filter.php?${searchParams.join('&')}`
+  );
   return response.data;
 };
 

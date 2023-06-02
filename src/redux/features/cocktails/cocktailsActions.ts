@@ -5,7 +5,7 @@ import {
   lookupRandomCocktail,
   searchCocktailByName,
 } from 'services/api';
-import { mapResponseDataCocktail } from 'utils/mapResponseData.utils';
+import { mapResponseDataCocktail } from 'utils';
 import { ICocktail } from './cocktailsTypes';
 
 export const fetchCocktailByName = createAsyncThunk(

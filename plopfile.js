@@ -1,46 +1,43 @@
+const componentGenerator = require('./plop/componentGenerator');
+const featureComponentGenerator = require('./plop/featureComponentGenerator');
+
 module.exports = function (plop) {
-  plop.setGenerator('component', {
-    description: 'Create component',
+  const generators = {
+    atoms: componentGenerator,
+    features: featureComponentGenerator,
+  };
+
+  function exists(path) {
+    return fs.existsSync(path);
+  }
+
+  function isFeatureDir(dir) {
+    return dir === 'features';
+  }
+
+  // Register the helper function
+  plop.setHelper('exists', exists);
+  plop.setHelper('isFeatureDir', isFeatureDir);
+
+  plop.setGenerator('default', {
+    description: 'Default Generator',
     prompts: [
       {
         type: 'input',
         name: 'name',
-        message: 'Component name?',
+        message: 'Enter the component name:',
       },
+      {
+        type: 'list',
+        name: 'dir',
+        message: 'Select directory',
+        choices: ['atoms', 'pages', 'features'],
+      },
+      ...featureComponentGenerator.prompts,
     ],
-    actions: [
-      {
-        type: 'add',
-        path: 'src/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
-        templateFile: 'templates/Component.tsx.hbs',
-      },
-      {
-        type: 'add',
-        path: 'src/components/{{pascalCase name}}/{{pascalCase name}}.module.scss',
-        templateFile: 'templates/Component.module.ts.hbs',
-      },
-      {
-        type: 'add',
-        path: 'src/components/{{pascalCase name}}/index.ts',
-        templateFile: 'templates/index.ts.hbs',
-      },
-      {
-        type: 'add',
-        path: 'src/components/{{pascalCase name}}/{{pascalCase name}}PropTypes.ts',
-        templateFile: 'templates/ComponentPropTypes.ts.hbs',
-      },
-      {
-        type: 'add',
-        path: 'src/components/index.ts',
-        skipIfExists: true,
-      },
-      {
-        type: 'append',
-        path: 'src/components/index.ts',
-        separator: '',
-        template: `export { default as {{pascalCase name}} } from './{{pascalCase name}}';\n`,
-        unique: true,
-      },
-    ],
+    actions: function (data) {
+      console.log(data);
+      return generators[data.dir].actions;
+    },
   });
 };

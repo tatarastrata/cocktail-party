@@ -7,9 +7,13 @@ import { selectModifiers } from 'appRedux/features/modifiers/modifiersSlice';
 const AlcoholicModifier: React.FC<IAlcoholicModifierPropTypes> = ({}) => {
   const { alcoholicDrinks } = useSelector(selectModifiers);
 
-  console.log(alcoholicDrinks);
-
-  return <div className={styles.AlcoholicModifier}>AlcoholicModifier</div>;
+  return (
+    <div className={styles.AlcoholicModifier} style={{ display: 'none' }}>
+      {alcoholicDrinks.map((drink) => (
+        <span key={drink.strAlcoholic}>{drink.strAlcoholic}</span>
+      ))}
+    </div>
+  );
 };
 
 export default AlcoholicModifier;

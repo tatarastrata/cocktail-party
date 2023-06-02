@@ -8,7 +8,7 @@ const IngredientModifier: React.FC<IIngredientModifierPropTypes> = ({}) => {
   const { ingredients } = useSelector(selectModifiers);
 
   return (
-    <div className={styles.IngredientModifier}>
+    <div className={styles.IngredientModifier} style={{ display: 'none' }}>
       {ingredients.map((ingredient) => (
         <p key={ingredient}>{ingredient}</p>
       ))}

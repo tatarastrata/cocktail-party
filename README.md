@@ -65,3 +65,32 @@ npm run build
 
 - add `<meta http-equiv="Permissions-Policy" content="interest-cohort=()">`
 - change any `src="/dir..."` to `src="./dir..."`
+
+### To add a module alias:
+1. in webpack add path:
+```
+module.export = {
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, '..', './src/components'),
+    },
+    ...
+  },
+  ...
+}
+```
+2. in tsconfig.json add compilerOptions (with path with a baseUrl) and include:
+```
+{
+  "compilerOptions": {
+      "baseUrl": "./src",
+      "paths": {
+        "components/*": ["components/*", "components"],
+        ...
+      },
+      ...
+},
+    "include": ["./", "src/**/*", "components"],
+}
+```
+3. 

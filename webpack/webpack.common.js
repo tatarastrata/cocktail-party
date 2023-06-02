@@ -10,6 +10,9 @@ module.exports = {
       utils: path.resolve(__dirname, '..', './src/utils'),
       services: path.resolve(__dirname, '..', './src/services'),
       styles: path.resolve(__dirname, '..', './src/styles'),
+      hooks: path.resolve(__dirname, '..', './src/hooks'),
+      hooks: path.resolve(__dirname, '..', './src/hooks'),
+      assets: path.resolve(__dirname, '..', './src/assets'),
     },
     fallback: {
       path: require.resolve('path-browserify'),

@@ -9,7 +9,7 @@ const CategoryModifier: React.FC<ICategoryModifierPropTypes> = ({}) => {
   const { categories } = useSelector(selectModifiers);
 
   return (
-    <div className={styles.CategoryModifier}>
+    <div className={styles.CategoryModifier} style={{ display: 'none' }}>
       {categories.map((category) => (
         <Badge key={category}>{category}</Badge>
       ))}

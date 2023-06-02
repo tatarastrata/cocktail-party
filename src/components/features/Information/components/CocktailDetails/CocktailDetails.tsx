@@ -1,65 +1,41 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ICocktailDetailsPropTypes } from './CocktailDetailsPropTypes';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectCocktailsDetails } from 'appRedux/features/detailsCocktail/detailsCocktailSlice';
-import { Box, Button, List, ListItem, Text } from '@chakra-ui/react';
-import { TAppDispatch } from 'appRedux/types';
-import { ICocktail } from 'appRedux/features/cocktails/cocktailsTypes';
-import {
-  addCocktail,
-  selectUserMenu,
-} from 'appRedux/features/userMenu/userMenuSlice';
+import { Box, HStack, Heading, Image, Stack, Text } from '@chakra-ui/react';
+import { AddCocktailToMenu, CategoryTag } from 'components/atoms';
+import IngredientsAndMeasures from '../IngredientsAndMeasures';
 
 const CocktailDetails: React.FC<ICocktailDetailsPropTypes> = ({}) => {
-  const { menu } = useSelector(selectUserMenu);
   const cocktailToDisplay = useSelector(selectCocktailsDetails);
-
-  const dispatch: TAppDispatch = useDispatch();
-
-  const handleAddCocktail = (cocktail: ICocktail) => {
-    dispatch(addCocktail(cocktail));
-  };
-
-  const isDisabled: boolean = useMemo(
-    () =>
-      !!(
-        cocktailToDisplay &&
-        menu.find((menuItem) => menuItem.id === cocktailToDisplay.id)
-      ),
-    [cocktailToDisplay, menu]
-  );
 
   if (!cocktailToDisplay) return null;
 
   return (
-    <Box>
-      <Text variant="h3">{cocktailToDisplay.name}</Text>
-
-      <img src={cocktailToDisplay.thumb} alt={cocktailToDisplay.name} />
-
-      <List>
-        {cocktailToDisplay.ingredients.map((ingredient) => (
-          <ListItem key={ingredient}>
-            <Text>{ingredient}</Text>
-          </ListItem>
+    <Stack w={'100%'} spacing={2}>
+      <Heading variant="h3" mb={2}>
+        {cocktailToDisplay.name}
+      </Heading>
+      <Image
+        boxSize="400px"
+        objectFit="cover"
+        src={cocktailToDisplay.thumb}
+        alt={cocktailToDisplay.name}
+      />
+      <HStack>
+        {cocktailToDisplay.isAlcoholic || <CategoryTag category={'Mocktail'} />}
+        <CategoryTag category={cocktailToDisplay.category} />
+        {cocktailToDisplay.tags.map((tag) => (
+          <CategoryTag key={tag} category={tag} />
         ))}
-      </List>
-
+      </HStack>
+      <Box>
+        <Heading variant="h4">Ingredients:</Heading>
+        <IngredientsAndMeasures />
+      </Box>
       <Text>{cocktailToDisplay.instructions}</Text>
-
-      <Button
-        color="secondary"
-        onClick={() => handleAddCocktail(cocktailToDisplay)}
-        variant="outlined"
-        size="small"
-        disabled={isDisabled}
-        sx={{
-          color: '$secondaryColorMain',
-        }}
-      >
-        {isDisabled ? 'Already there' : 'Add to menu'}
-      </Button>
-    </Box>
+      <AddCocktailToMenu cocktail={cocktailToDisplay} />
+    </Stack>
   );
 };
 

@@ -1,20 +1,18 @@
 import { MainPage, FallbackUI } from 'components/pages';
-import 'styles/index.scss';
 import ErrorBoundary from 'components/pages/ErrorBoundary';
-import store from './redux/store';
 import { Header } from 'components/features/Header';
-import { Footer } from 'components/features/Footer';
-import { ChakraProvider } from '@chakra-ui/react';
+// import { Footer } from 'components/features/Footer';
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
+import { theme } from './styles';
 
 export const App: React.FC = () => {
-  console.log(store.getState());
-
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
+      <ColorModeScript />
       <ErrorBoundary fallbackUI={<FallbackUI />}>
         <Header />
         <MainPage />
-        <Footer />
+        {/* <Footer /> */}
       </ErrorBoundary>
     </ChakraProvider>
   );

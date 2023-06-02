@@ -1,18 +1,24 @@
 import React from 'react';
 import { ISearchFiltersPropTypes } from './SearchFiltersPropTypes';
 import { useSelector } from 'react-redux';
-import { selectModifiers } from 'appRedux/features/modifiers';
-import { Box, Text } from '@chakra-ui/react';
+import { EModifiers, selectModifiers } from 'appRedux/features/modifiers';
+import { FilterAccordion } from 'components/atoms';
+import { HStack } from '@chakra-ui/react';
 
 const SearchFilters: React.FC<ISearchFiltersPropTypes> = ({}) => {
-  const { categories } = useSelector(selectModifiers);
+  const { categories, ingredients } = useSelector(selectModifiers);
 
   return (
-    <Box>
-      {categories.map((category: string) => (
-        <Text key={category}>{category}</Text>
-      ))}
-    </Box>
+    <HStack alignItems={'flex-start'}>
+      <FilterAccordion
+        filterName={EModifiers.CATEGORY}
+        filterOptions={categories}
+      />
+      <FilterAccordion
+        filterName={EModifiers.INGREDIENT}
+        filterOptions={ingredients}
+      />
+    </HStack>
   );
 };
 

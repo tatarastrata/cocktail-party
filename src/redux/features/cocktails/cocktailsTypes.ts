@@ -16,7 +16,7 @@ export interface ICocktail {
   ingredients: Array<string>;
   instructions: string;
   measures: Array<TMeasures>;
-  tags: string;
+  tags: Array<string>;
 }
 
 // store state

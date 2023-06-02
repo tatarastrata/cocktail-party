@@ -1,4 +1,13 @@
-export { default as Button } from './Button';
 export { default as FormControl } from './FormControl';
 export { default as DrawerComponent } from './DrawerComponent';
 export { default as MenuBadge } from './MenuBadge';
+export { default as InputWithOptions } from './InputWithOptions';
+export { default as CategoryTag } from './CategoryTag';
+export { default as FilterAccordion } from './FilterAccordion';
+export { default as AlcoholTag } from './AlcoholTag';
+export { default as AssociatedTags } from './AssociatedTags';
+export { default as AddCocktailToMenu } from './AddCocktailToMenu';
+export { default as Icon } from './Icon';
+export { default as Table } from './Table';
+export { default as LearnMoreButton } from './LearnMoreButton';
+export { default as GoBackButton } from './GoBackButton';

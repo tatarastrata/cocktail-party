@@ -8,7 +8,7 @@ const GlassModifier: React.FC<IGlassModifierPropTypes> = ({}) => {
   const { glasses } = useSelector(selectModifiers);
 
   return (
-    <div className={styles.GlassModifier}>
+    <div className={styles.GlassModifier} style={{ display: 'none' }}>
       {glasses.map((glass) => (
         <span key={glass}>{glass}</span>
       ))}
