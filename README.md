@@ -11,7 +11,8 @@ React Typescript app with
 - Plop for creating project templates (`./plopfile.js`, `./templates/*ts.hbs`);
 - `dependabot.yml` file for tracking project dependencies;
 - SCSS (Sass); if it's not needed, consider uninstalling it;
-- Redux setup with sample TodoReducer;
+- Redux and Redux toolkit;
+- axios;
 - error boundary;
 - jest;
 
@@ -23,11 +24,6 @@ npm init --y
 ```
 
 other available scripts:
- "components": "./src/components",
-            "services": "./src/services",
-            "utils": "./src/utils",
-            "redux": "./src/redux",
-            "styles": "./src/styles"
 ```
 "scripts": {
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
@@ -38,8 +34,6 @@ other available scripts:
   },
 ```
 
-Don't forget to install ESlint, Prettier extensions in VSCode.
-
 ## How to generate components:
 
 run the command
@@ -49,22 +43,6 @@ npm run plop [ComponentName]
 ```
 
 and answer the questions on component dir.
-
-## How to deploy to GitHub Pages:
-
-1. checkout to the new branch, i.e., 'gh-pages'
-
-2. run the command
-
-```
-npm run build
-```
-
-3. place the `build` dir as a root.
-4. additional steps that may be needed in `index.html`:
-
-- add `<meta http-equiv="Permissions-Policy" content="interest-cohort=()">`
-- change any `src="/dir..."` to `src="./dir..."`
 
 ### To add a module alias:
 1. in webpack add path:
