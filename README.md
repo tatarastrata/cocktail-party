@@ -1,6 +1,4 @@
-# react-ts template by meeee
-
-React Typescript app with
+# React Typescript app with
 
 - TypeScript (`./tsconfig.json`);
 - Webpack - `./webpack/webpack.config.js` is set up for environments `dev` and `prod` (`prod` is for deployment);
