@@ -11,10 +11,12 @@ import {
   Drawer,
   DrawerBody,
   DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
   DrawerOverlay,
   Stack,
 } from '@chakra-ui/react';
-import { useDesktopView } from 'hooks';
+import { useViewport } from 'hooks';
 
 const permanentProps = {
   position: 'relative',
@@ -24,10 +26,13 @@ const permanentProps = {
   backgroundColor: 'white',
 };
 
-const DrawerComponent: React.FC<IDrawerComponentPropTypes> = ({ children }) => {
+const DrawerComponent: React.FC<IDrawerComponentPropTypes> = ({
+  title,
+  footer,
+  children,
+}) => {
   const { showMenu } = useSelector(selectUserMenu);
-  const isDesktop = useDesktopView();
-  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isDesktop } = useViewport();
 
   const dispatch: TAppDispatch = useDispatch();
 
@@ -47,7 +52,11 @@ const DrawerComponent: React.FC<IDrawerComponentPropTypes> = ({ children }) => {
     <Drawer isOpen={showMenu} placement="right" onClose={handleCloseDrawer}>
       <DrawerOverlay />
       <DrawerContent>
+        <DrawerHeader>{title}</DrawerHeader>
         <DrawerBody>{children}</DrawerBody>
+        <DrawerFooter w="100%" display="none">
+          {footer}
+        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );

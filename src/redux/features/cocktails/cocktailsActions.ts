@@ -4,9 +4,11 @@ import {
   lookupCocktailById,
   lookupRandomCocktail,
   searchCocktailByName,
+  searchCocktailsWithFilters,
 } from 'services/api';
 import { mapResponseDataCocktail } from 'utils';
 import { ICocktail } from './cocktailsTypes';
+import { ISearchCocktailWithFiltersPropTypes } from 'services/models';
 
 export const fetchCocktailByName = createAsyncThunk(
   'cocktails/fetchByName',
@@ -40,5 +42,34 @@ export const fetchRandomCocktail = createAsyncThunk(
   async () => {
     const response = await lookupRandomCocktail();
     return response.drinks;
+  }
+);
+
+export const fetchCocktailsWithFilters = createAsyncThunk(
+  'cocktails/fetchWithFilters',
+  async ({
+    ingredients,
+    tags,
+    categories,
+    alcohol,
+    searchInput,
+  }: ISearchCocktailWithFiltersPropTypes) => {
+    const response = await searchCocktailsWithFilters({
+      ingredients,
+      tags,
+      categories,
+      alcohol,
+      searchInput,
+    });
+
+    const cocktails = await Promise.all(
+      response.drinks.map(async ({ idDrink }) => {
+        const cocktailsResponse = await lookupCocktailById(idDrink);
+        return mapResponseDataCocktail(cocktailsResponse.drinks[0]);
+      })
+    );
+    console.log(cocktails);
+
+    return cocktails;
   }
 );

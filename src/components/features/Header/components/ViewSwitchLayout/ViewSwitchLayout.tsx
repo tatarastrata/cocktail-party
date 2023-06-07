@@ -1,10 +1,9 @@
 import React from 'react';
-import { IViewSwitchLayoutPropTypes } from './ViewSwitchLayoutPropTypes';
 import { FormControl, FormLabel, Switch } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ELayout, selectLayout, setLayout } from 'appRedux/features/view';
 
-const ViewSwitchLayout: React.FC<IViewSwitchLayoutPropTypes> = ({}) => {
+const ViewSwitchLayout: React.FC = ({}) => {
   const layout = useSelector(selectLayout);
   const dispatch = useDispatch();
 

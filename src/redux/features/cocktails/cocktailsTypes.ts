@@ -1,3 +1,5 @@
+import { ECategories } from '../modifiers';
+
 export type TMeasures = {
   ingredient: string;
   measure: string;
@@ -6,7 +8,7 @@ export type TMeasures = {
 export interface ICocktail {
   id: string;
   isAlcoholic: boolean;
-  category: string;
+  category: ECategories;
   name: string;
   alternate: string;
   thumb: string;

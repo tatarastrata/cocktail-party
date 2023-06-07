@@ -1,4 +1,4 @@
-import { EAlcoholModifier } from 'appRedux/features/modifiers';
+import { EAlcoholModifier, ECategories } from 'appRedux/features/modifiers';
 
 export interface ICocktailModel {
   [key: string]: string;
@@ -67,16 +67,16 @@ export interface IModifiersModel {
 
 export interface IFilteredSearchModel {
   drinks: Array<{
-    strDrink: string;
+    strDrink: string; //name
     trDrinkThumb: string;
     idDrink: string;
   }>;
 }
 
 export interface ISearchCocktailWithFiltersPropTypes {
-  categories?: [string];
-  tags?: [string];
-  ingredients?: [string];
+  categories?: Array<ECategories>;
+  tags?: Array<string>;
+  ingredients?: Array<string>;
   alcohol?: EAlcoholModifier;
   searchInput?: string;
 }

@@ -1,19 +1,19 @@
 import React from 'react';
-import { IGoBackButtonPropTypes } from './GoBackButtonPropTypes';
 import { Button } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { ELayout, setLayout } from 'appRedux/features/view';
+import { hideDetails } from 'appRedux/features/detailsCocktail';
 
-const GoBackButton: React.FC<IGoBackButtonPropTypes> = ({}) => {
+const GoBackButton: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleGoBack = () => {
     dispatch(setLayout(ELayout.LIST));
+    dispatch(hideDetails());
   };
 
   return (
     <Button
-      // leftIcon={}
       aria-label="Back to list view"
       onClick={handleGoBack}
       variant="ghost"

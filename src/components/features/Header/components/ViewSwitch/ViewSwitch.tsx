@@ -1,13 +1,10 @@
 import React from 'react';
-import { IViewSwitchPropTypes } from './ViewSwitchPropTypes';
-// import ViewSwitchLayout from '../ViewSwitchLayout';
-import ViewSwitchTheme from '../ViewSwitchTheme';
+import ViewSwitchLayout from '../ViewSwitchLayout';
 
-const ViewSwitch: React.FC<IViewSwitchPropTypes> = ({}) => {
+const ViewSwitch: React.FC = ({}) => {
   return (
-    <div>
-      {/* <ViewSwitchLayout /> */}
-      <ViewSwitchTheme />
+    <div style={{ display: 'none' }}>
+      <ViewSwitchLayout />
     </div>
   );
 };

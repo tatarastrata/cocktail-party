@@ -1,12 +1,9 @@
 import React from 'react';
-import { IIngredientsAndMeasuresPropTypes } from './IngredientsAndMeasuresPropTypes';
 import { useSelector } from 'react-redux';
 import { selectCocktailsDetails } from 'appRedux/features/detailsCocktail';
 import { Table } from 'components/atoms';
 
-const IngredientsAndMeasures: React.FC<
-  IIngredientsAndMeasuresPropTypes
-> = ({}) => {
+const IngredientsAndMeasures: React.FC = ({}) => {
   const cocktail = useSelector(selectCocktailsDetails);
 
   if (!cocktail) return null;

@@ -16,12 +16,13 @@ import {
   LearnMoreButton,
 } from 'components/atoms';
 import { accumulateCocktailTags } from 'utils';
+import { v4 as uuidv4 } from 'uuid';
 
 const CocktailsListCard: React.FC<ICocktailsListCardPropTypes> = ({
   cocktail,
 }) => {
   return (
-    <Card size="sm" key={cocktail.id}>
+    <Card size="sm">
       <CardHeader color={'pink'}>{cocktail.name}</CardHeader>
       <CardBody>
         <VStack alignItems={'flex-start'}>
@@ -34,7 +35,7 @@ const CocktailsListCard: React.FC<ICocktailsListCardPropTypes> = ({
           <AssociatedTags list={accumulateCocktailTags(cocktail)} />
 
           {cocktail.ingredients.map((ingredient) => (
-            <Text m={'0'} key={ingredient}>
+            <Text m={'0'} key={uuidv4()}>
               {ingredient}
             </Text>
           ))}

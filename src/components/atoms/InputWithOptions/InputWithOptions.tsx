@@ -54,7 +54,7 @@ const InputWithOptions: React.FC<IInputWithOptionsPropTypes> = ({
 
   useEffect(() => {
     selectedCocktail && setInputValue(selectedCocktail?.name);
-  }, [selectedCocktail]);
+  }, [selectedCocktail, setInputValue]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;

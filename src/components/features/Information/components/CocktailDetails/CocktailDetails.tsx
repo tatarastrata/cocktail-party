@@ -1,12 +1,11 @@
 import React from 'react';
-import { ICocktailDetailsPropTypes } from './CocktailDetailsPropTypes';
 import { useSelector } from 'react-redux';
 import { selectCocktailsDetails } from 'appRedux/features/detailsCocktail/detailsCocktailSlice';
 import { Box, HStack, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import { AddCocktailToMenu, CategoryTag } from 'components/atoms';
 import IngredientsAndMeasures from '../IngredientsAndMeasures';
 
-const CocktailDetails: React.FC<ICocktailDetailsPropTypes> = ({}) => {
+const CocktailDetails: React.FC = ({}) => {
   const cocktailToDisplay = useSelector(selectCocktailsDetails);
 
   if (!cocktailToDisplay) return null;
