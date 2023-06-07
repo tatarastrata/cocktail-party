@@ -5,6 +5,7 @@ import {
   fetchCocktailById,
   fetchCocktailByName,
   fetchCocktailsByFirstLetter,
+  fetchCocktailsWithFilters,
   fetchRandomCocktail,
 } from './cocktailsActions';
 
@@ -68,6 +69,19 @@ const cocktailsSlice = createSlice({
         state.cocktails = action.payload || [];
       })
       .addCase(fetchRandomCocktail.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'An error occurred';
+      })
+
+      .addCase(fetchCocktailsWithFilters.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchCocktailsWithFilters.fulfilled, (state, action) => {
+        state.loading = false;
+        state.cocktails = action.payload || [];
+      })
+      .addCase(fetchCocktailsWithFilters.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'An error occurred';
       });

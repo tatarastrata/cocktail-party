@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {
-  ISearchCocktailInputPropTypes,
-  TOptionValue,
-} from './SearchCocktailInputPropTypes';
+import { TOptionValue } from './SearchCocktailInputPropTypes';
 import { InputWithOptions } from 'components/atoms';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCocktailsByFirstLetter } from 'appRedux/features/cocktails/cocktailsActions';
 import { selectCocktails } from 'appRedux/features/cocktails/cocktailsSlice';
 import { TAppDispatch } from 'appRedux/types';
 import { showDetails } from 'appRedux/features/detailsCocktail';
-import { ELayout, selectLayout } from 'appRedux/features/view';
+import { ELayout, selectLayout, setLayout } from 'appRedux/features/view';
 
-const SearchCocktailInput: React.FC<ISearchCocktailInputPropTypes> = ({}) => {
+const SearchCocktailInput: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<TOptionValue[]>([]);
   const dispatch: TAppDispatch = useDispatch();
@@ -20,7 +17,10 @@ const SearchCocktailInput: React.FC<ISearchCocktailInputPropTypes> = ({}) => {
   const layout = useSelector(selectLayout);
 
   const handleSelectCocktail = (id: string) => {
-    dispatch(showDetails(cocktails.find((cocktail) => cocktail.id === id)));
+    const selected = cocktails.find((cocktail) => cocktail.id === id);
+    if (!selected) return;
+    dispatch(showDetails(selected));
+    dispatch(setLayout(ELayout.SINGLE));
   };
 
   useEffect(() => {

@@ -7,6 +7,7 @@ import { ELayout, setLayout } from 'appRedux/features/view';
 
 const LearnMoreButton: React.FC<ILearnMoreButtonPropTypes> = ({ cocktail }) => {
   const dispatch = useDispatch();
+
   const handleOpenCocktail = () => {
     dispatch(showDetails(cocktail));
     dispatch(setLayout(ELayout.SINGLE));
