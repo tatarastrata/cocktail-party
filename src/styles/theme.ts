@@ -22,6 +22,9 @@ export const theme: Partial<Theme> = extendTheme({
         height: '100%',
         width: '100%',
       },
+      div: {
+        boxSizing: 'border-box',
+      },
       'div#root': {
         height: '100%',
         width: '100%',
@@ -43,6 +46,7 @@ export const theme: Partial<Theme> = extendTheme({
         bottom: 0,
       },
       section: {
+        boxSizing: 'border-box',
         paddingBottom: '2rem',
         width: '100%',
       },
@@ -86,29 +90,25 @@ export const theme: Partial<Theme> = extendTheme({
         },
       },
     },
-    // Drawer: {
-    //   variants: {
-    //     permanent: {
-    //       dialog: {
-    //         pointerEvents: 'auto',
-    //       },
-    //       dialogContainer: {
-    //         pointerEvents: 'none',
-    //       },
-    //     },
-    //     baseStyle: {
-    //       backgroundColor: colors.white,
-    //     },
-    //   },
-    // },
-    // DrawerBody: {
-    //   overrides: {
-    //     backgroundColor: colors.white,
-    //   },
-    //   baseStyles: {
-    //     color: colors.blue[900],
-    //     backgroundColor: colors.white,
-    //   },
-    // },
+    Drawer: {
+      DrawerContent: {
+        overrides: {
+          backgroundColor: colors.white,
+        },
+        baseStyles: {
+          color: colors.blue[900],
+          backgroundColor: colors.white,
+        },
+      },
+      DrawerBody: {
+        overrides: {
+          backgroundColor: colors.white,
+        },
+        baseStyles: {
+          color: colors.blue[900],
+          backgroundColor: colors.white,
+        },
+      },
+    },
   },
 });

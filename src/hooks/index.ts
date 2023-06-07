@@ -1,1 +1,1 @@
-export * from './useDesktopView';
+export * from './useViewport';

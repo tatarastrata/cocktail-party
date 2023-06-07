@@ -1,8 +1,7 @@
 import React from 'react';
-import { IFallbackUIPropTypes } from './FallbackUIPropTypes';
 import styles from './FallbackUI.module.scss';
 
-const FallbackUI: React.FC<IFallbackUIPropTypes> = ({}) => {
+const FallbackUI: React.FC = () => {
   return <div className={styles.FallbackUI}>FallbackUI</div>;
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import { ISpiritBadgePropTypes } from './SpiritBadgePropTypes';
 
-const SpiritBadge: React.FC<ISpiritBadgePropTypes> = ({}) => {
+const SpiritBadge: React.FC = () => {
   return <div>SpiritBadge</div>;
 };
 

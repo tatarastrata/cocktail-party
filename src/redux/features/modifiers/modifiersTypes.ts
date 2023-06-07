@@ -32,7 +32,7 @@ export interface IAlcoholicDrink {
 }
 
 export interface IModifiersState {
-  categories: TModifiers;
+  categories: Array<ECategories>;
   glasses: TModifiers;
   ingredients: TModifiers;
   alcoholicDrinks: IAlcoholicDrink[];

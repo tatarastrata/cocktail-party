@@ -35,17 +35,18 @@ export const searchCocktailsWithFilters = async ({
   alcohol,
   searchInput,
 }: ISearchCocktailWithFiltersPropTypes): Promise<IFilteredSearchModel> => {
-  const searchParams = [];
+  const searchParams = new URLSearchParams();
+  console.log(['i', ingredients?.join('+')]);
 
-  if (!!ingredients) searchParams.push(['i', ingredients.join(',')]);
-  if (!!tags) searchParams.push(['t', tags.join(',')]);
-  if (!!categories) searchParams.push(['i', categories.join(',')]);
-  if (!!alcohol) searchParams.push(['a', alcohol]);
-  if (!!searchInput) searchParams.push(['s', searchInput]);
+  if (!!ingredients?.length) searchParams.append('i', ingredients.join('&'));
+  if (!!tags?.length) searchParams.append('t', tags.join('+'));
+  if (!!categories?.length) searchParams.append('c', categories.join('+'));
+  if (!!alcohol) searchParams.append('a', alcohol);
+  if (!!searchInput) searchParams.append('s', searchInput);
 
-  const response = await axiosInstance.get(
-    `/filter.php?${searchParams.join('&')}`
-  );
+  console.log(searchParams);
+
+  const response = await axiosInstance.get(`/filter.php?${searchParams}`);
   return response.data;
 };
 

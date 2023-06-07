@@ -1,5 +1,4 @@
 import React from 'react';
-import { IMenuBadgePropTypes } from './MenuBadgePropTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { TAppDispatch } from 'appRedux/types';
 import {
@@ -9,7 +8,7 @@ import {
 import { Badge, Text, Button } from '@chakra-ui/react';
 import { colors } from 'styles/colors';
 
-const MenuBadge: React.FC<IMenuBadgePropTypes> = ({}) => {
+const MenuBadge: React.FC = ({}) => {
   const dispatch: TAppDispatch = useDispatch();
   const { menu } = useSelector(selectUserMenu);
 
@@ -23,6 +22,7 @@ const MenuBadge: React.FC<IMenuBadgePropTypes> = ({}) => {
       onClick={handleOpenMenu}
       variant="ghost"
       position="relative"
+      isDisabled={menu.length === 0}
       sx={{
         borderSizing: 'content-box',
       }}

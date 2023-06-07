@@ -1,5 +1,4 @@
 import React from 'react';
-import { IMainPagePropTypes } from './MainPagePropTypes';
 import { Menu } from 'components/features/Menu';
 import { Search } from 'components/features/Search';
 import { Information } from 'components/features/Information';
@@ -8,23 +7,19 @@ import { HStack, VStack } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { ELayout, selectLayout } from 'appRedux/features/view';
 import { CocktailsList } from 'components/features/CocktailsList';
-import { selectCocktails } from 'appRedux/features/cocktails';
+import { selectCocktailsDetails } from 'appRedux/features/detailsCocktail';
 
-const MainPage: React.FC<IMainPagePropTypes> = ({}) => {
+const MainPage: React.FC = () => {
   const layout = useSelector(selectLayout);
-  const cocktails = useSelector(selectCocktails);
+  const detailsCocktail = useSelector(selectCocktailsDetails);
 
   return (
     <main>
       <HStack justifyContent={'space-between'}>
         <VStack>
-          <Search />
+          {!detailsCocktail && <Search />}
           <Modifiers />
-          {layout === ELayout.LIST ? (
-            <CocktailsList list={cocktails} />
-          ) : (
-            <Information />
-          )}
+          {layout === ELayout.LIST ? <CocktailsList /> : <Information />}
         </VStack>
         <Menu />
       </HStack>
